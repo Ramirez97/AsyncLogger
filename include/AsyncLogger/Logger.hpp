@@ -4,11 +4,11 @@
     #define FORMAT std::format
     #define VFORMAT std::vformat
     #define MAKE_FORMAT_ARGS std::make_format_args
-#else
-    #include <fmt/core.h>
-    #define FORMAT fmt::format
-    #define VFORMAT fmt::vformat
-    #define MAKE_FORMAT_ARGS fmt::make_format_args
+//#else // FMT not working - Roberto A. Ramirez
+//    #include <fmt/core.h>
+//    #define FORMAT fmt::format
+//    #define VFORMAT fmt::vformat
+//    #define MAKE_FORMAT_ARGS fmt::make_format_args
 #endif
 #include <functional>
 #include "concurrency/shared_queue.hpp"
