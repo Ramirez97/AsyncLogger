@@ -44,7 +44,7 @@ endif()
 find_package(Threads REQUIRED)
 target_link_libraries(${PROJECT_NAME} Threads::Threads )
 
-set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 20)
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 23)
 
 target_include_directories(${PROJECT_NAME} PRIVATE "${PUBLIC_HEADER_DIR}/AsyncLogger/")
 target_include_directories(${PROJECT_NAME} PUBLIC "${SRC_DIR}")
