@@ -23,6 +23,14 @@ file(GLOB_RECURSE PUBLIC_HEADER_FILES
 
 add_library(${PROJECT_NAME} STATIC ${SRC_FILES} ${PUBLIC_HEADER_FILES})
 
+if(MSVC)
+    add_compile_options(
+        $<$<CONFIG:>:/MT> #---------|
+        $<$<CONFIG:Debug>:/MTd> #---|-- Statically link the runtime libraries
+        $<$<CONFIG:Release>:/MT> #--|
+    )
+endif()
+
 if(CXX_FORMAT_SUPPORT)
     message(STATUS "Using std::format for formatting, you can set USE_FMT to force fmt::format instead.")
 else()
