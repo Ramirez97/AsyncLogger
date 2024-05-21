@@ -21,6 +21,15 @@ file(GLOB_RECURSE PUBLIC_HEADER_FILES
     "${PUBLIC_HEADER_DIR}/**.hpp"
 )
 
+# Debug / Release MultiThreaded
+if(MSVC)
+    add_compile_options(
+        $<$<CONFIG:>:/MT> #---------|
+        $<$<CONFIG:Debug>:/MTd> #---|-- Statically link the runtime libraries
+        $<$<CONFIG:Release>:/MT> #--|
+    )
+endif()
+
 add_library(${PROJECT_NAME} STATIC ${SRC_FILES} ${PUBLIC_HEADER_FILES})
 
 if(CXX_FORMAT_SUPPORT)
@@ -44,7 +53,7 @@ endif()
 find_package(Threads REQUIRED)
 target_link_libraries(${PROJECT_NAME} Threads::Threads )
 
-set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 20)
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 23)
 
 target_include_directories(${PROJECT_NAME} PRIVATE "${PUBLIC_HEADER_DIR}/AsyncLogger/")
 target_include_directories(${PROJECT_NAME} PUBLIC "${SRC_DIR}")
