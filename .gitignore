@@ -431,3 +431,6 @@ FodyWeavers.xsd
 
 # build
 build/
+.vscode/
+build/
+/.vs
